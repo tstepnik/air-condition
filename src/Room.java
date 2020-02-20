@@ -1,16 +1,24 @@
-public class Room {
+public class Room {;
+    int number;
     private int cubature;
     private double temperature;
-    private String name;
-    private boolean pro;
-    private double acTemperature;
+    private double desirableTemperature;
+    private AirCondition airConditioner;
 
-    public Room(int cubature, double temperature, String name, boolean pro, double acTemperature) {
+    public Room(int number, int cubature, double temperature, double desirableTemperature, AirCondition airConditioner) {
+        this.number = number;
         this.cubature = cubature;
         this.temperature = temperature;
-        this.name = name;
-        this.pro = pro;
-        this.acTemperature = acTemperature;
+        this.desirableTemperature = desirableTemperature;
+        this.airConditioner = airConditioner;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
     }
 
     public int getCubature() {
@@ -29,28 +37,27 @@ public class Room {
         this.temperature = round(temperature,2);
     }
 
-    public String getName() {
-        return name;
+    public double getDesirableTemperature() {
+        return desirableTemperature;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDesirableTemperature(double desirableTemperature) {
+        this.desirableTemperature = desirableTemperature;
     }
 
-    public boolean isPro() {
-        return pro;
+    public AirCondition getAirConditioner() {
+        return airConditioner;
     }
 
-    public void setPro(boolean pro) {
-        this.pro = pro;
+    public void setAirConditioner(AirCondition airConditioner) {
+        this.airConditioner = airConditioner;
     }
 
-    public double getAcTemperature() {
-        return acTemperature;
-    }
-
-    public void setAcTemperature(double acTemperature) {
-        this.acTemperature = acTemperature;
+    @Override
+    public String toString() {
+        return "Pokój nr " + number + " o powierzchni " +
+                cubature + " ma temperaturę powietrza " +
+                temperature + " stopni celcjusza, korzysta z klimatyzatora " + airConditioner.toString();
     }
 
     public static double round(double value, int places) {
@@ -60,9 +67,5 @@ public class Room {
         value = value * factor;
         long tmp = Math.round(value);
         return (double) tmp / factor;
-    }
-
-    public void printRoomTemperature(){
-        System.out.println("Temperatura w " + name + " wynosi " + round(temperature,1));
     }
 }
